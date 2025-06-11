@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/menu") %>
+    <center>
+        <h1 id="h1Login">NOVA POSTAGEM</h1>
+        <main>
+            <form action="/nova-doacao" method="post" 
+            onsubmit="
+            const id_turma = document.getElementById('id_turma').value;
+            const id_roupa = document.getElementById('id_roupa').value;
+            const qtd = document.getElementById('qtd').value;
+        
+        if (!id_turma || !id_roupa || !qtd) {
+          alert('Preencha Todos os Campos para Postar a Arrecadação!');
+          return false;
+        }
+        return confirm('Tem Certeza Que Deseja Adicionar uma Arrecadação?');" 
+            class="formItens">
+        <table id="tblPost">
+            <tr>
+                <td>
+                    ESCOLHA A TURMA DOADORA:
+                </td>
+                <td>
+                    <select name="id_turma" id="id_turma" style="width: 200px;">
+                            <option value="">[Escolha]</option>
+                        <% let i = 0; for (i = 0 ; i< turmas.length; i++) {%>
+                            <option value="<%= turmas[i].id_turma %>"><%= turmas[i].sigla %> - [<%= turmas[i].docente %>]</option>
+                        <% } %>
+                      </select>
+                </td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td><br></td>
+            </tr>
+            <tr>
+                <td>
+                    QUAL ITEM SERÁ DOADO:
+                </td>
+                <td>
+                    <select name="id_roupa" id="id_roupa" style="width: 200px;">
+                        <option value="">[Escolha]</option>
+                        <% let x = 0; for (x = 0 ; x< pontuacoes.length; x++) {%>
+                            <option value="<%= pontuacoes[x].id %>"><%= pontuacoes[x].Descricao%> - <%= pontuacoes[x].Pontos %> Pontos</option>
+                        <% } %>
+                      </select>
+                </td>
+            </tr>
+            <tr>
+                <td><br></td>
+                <td><br></td>
+            </tr>
+            <tr>
+                <td>
+                    QUANTIDADE DE ITENS:
+                </td>
+                <td>
+                    <select name="qtd" id="qtd" style="width: 200px;">
+                        <option value="">[Escolha]</option>
+                        <% let z = 1; for (z = 1 ; z< 100; z++) {%>
+                            <option value="<%= z %>"><%= z %></option>
+                        <% } %>
+                      </select>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <button type="submit" id="btnPost">GRAVAR ARRECADAÇÃO</button>
+            </form>
+        </main>
+    </center>
+
+    <%- include("../partials/footer") %>
+</body>
+
+</html>

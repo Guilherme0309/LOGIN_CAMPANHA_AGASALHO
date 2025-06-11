@@ -1,0 +1,57 @@
+<table>
+  <thead>
+    <tr>
+      <th>POSIÇÃO</th>
+      <th>SALA</th>
+      <th>DOCENTE</th>
+      <th>PONTOS</th>
+      <th>LINK DA SALA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% let qtd_posts = pag*5 %>
+
+    <%- console.log(JSON.stringify(qtd_posts)); %>
+    <%- console.log(JSON.stringify(dados.length)); %>
+
+    <!-- SE EXISTIREM MAIS DE 5 POSTS -->
+    <% if (dados.length > 5) { %> 
+      <% let i = qtd_posts-5; for (i = qtd_posts-5 ; i< qtd_posts; i++) {%>
+        <% if (i < dados.length) {%>
+        <tr>
+          <td><%= i + 1 %>°</td>
+          <td><%= dados[i].sigla %></td>
+          <td><%= dados[i].docente %></td>
+          <td><%= dados[i].totalPontos %></td>
+          <td><a href=/dadosDaTurma/<%=dados[i].id_turma%>>Dados da Turma</a></td>
+          <% } %>
+        </tr>
+        </tbody>
+        <% } %>
+    <tfoot>
+      <tr>
+          <td colspan="4">
+          <% if (pag > 1) {%>
+          <a href="/tabGeral/<%= Number(pag) - 1 %>"> <-- </a>
+          <% } %>
+          <% if (qtd_posts < dados.length) {%>
+          <a href="/tabGeral/<%= Number(pag) + 1  %>"> --> </a>
+          <% } %>
+        </td>
+      </tr>
+    </tfoot>
+    <!-- SE EXISTIREM 5 POSTS OU MENOS -->
+  <% } else {%>
+  <% let i = 0; for (i = 0; i< dados.length; i++) {%>
+  <tr>
+    <td><%= i + 1 %>°</td>
+          <td><%= dados[i].sigla %></td>
+          <td><%= dados[i].docente %></td>
+          <td><%= dados[i].totalPontos %></td>
+          <td><a href=/dadosDaTurma/<%=dados[i].id_turma%>>Dados da Turma</a></td>
+  </tr>
+  </tbody>
+  <% } %>
+  <tfoot>
+  <% } %>
+</table>

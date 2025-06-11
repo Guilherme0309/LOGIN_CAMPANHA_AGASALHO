@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/menu") %>
+    <br><br>
+    <%- console.log(JSON.stringify(dados)); %>
+    <center>
+    <h1>ARRECADAÇÕES</h1>
+    <main id="MainDash">
+    <%- include("../partials/arrecadacoesTable") %>
+    </main>
+    </center>
+    <%- include("../partials/footer") %>
+</body>
+
+</html>

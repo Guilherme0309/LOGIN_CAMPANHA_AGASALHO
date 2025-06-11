@@ -1,0 +1,59 @@
+<table>
+  <thead>
+    <tr>
+      <th>SALA</th>
+      <th>TIPO DE ROUPA</th>
+      <th>PONTOS POR UNIDADE</th>
+      <th>QUANTIDADE</th>
+      <th>PONTOS GANHOS</th>
+      <th>DATA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% let qtd_posts = pag*5 %>
+
+    <%- console.log(JSON.stringify(qtd_posts)); %>
+    <%- console.log(JSON.stringify(dados.length)); %>
+
+    <!-- SE EXISTIREM MAIS DE 5 POSTS -->
+    <% if (dados.length > 5) { %> 
+      <% let i = qtd_posts-5; for (i = qtd_posts-5 ; i< qtd_posts; i++) {%>
+        <% if (i < dados.length) {%>
+        <tr>
+          <td><%= dados[i].sigla %></td>
+          <td><%= dados[i].Descricao %></td>
+          <td><%= dados[i].Pontos %> Pontos</td>
+          <td><%= dados[i].qtd %></td>
+          <td><%= Number(dados[i].Pontos)*Number(dados[i].qtd) %></td>
+          <td><%= dados[i].data %></td>
+          <% } %>
+        </tr>
+        </tbody>
+        <% } %>
+    <tfoot>
+      <tr>
+          <td colspan="3">
+          <% if (pag > 1) {%>
+          <a href="/posts/<%= Number(pag) - 1 %>"> <-- </a>
+          <% } %>
+          <% if (qtd_posts < dados.length) {%>
+          <a href="/posts/<%= Number(pag) + 1  %>"> --> </a>
+          <% } %>
+        </td>
+      </tr>
+    </tfoot>
+    <!-- SE EXISTIREM 5 POSTS OU MENOS -->
+  <% } else {%>
+  <% let i = 0; for (i = 0; i< dados.length; i++) {%>
+    <tr>
+      <td><%= dados[i].sigla %></td>
+      <td><%= dados[i].Descricao %></td>
+      <td><%= dados[i].Pontos %> Pontos</td>
+      <td><%= dados[i].qtd %></td>
+      <td><%= Number(dados[i].Pontos)*Number(dados[i].qtd) %></td>
+      <td><%= dados[i].data %></td>
+      <% } %>
+    </tr>
+    </tbody>
+  <% } %>
+</table>
