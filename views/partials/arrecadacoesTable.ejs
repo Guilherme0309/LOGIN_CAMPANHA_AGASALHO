@@ -3,7 +3,7 @@
     <tr>
       <th>SALA</th>
       <th>TIPO DE ROUPA</th>
-      <th>PONTOS POR UNIDADE</th>
+      <th>PONTOS (UNITÁRIOS)</th>
       <th>QUANTIDADE</th>
       <th>PONTOS GANHOS</th>
       <th>DATA</th>
@@ -24,7 +24,7 @@
           <td><%= dados[i].Descricao %></td>
           <td><%= dados[i].Pontos %> Pontos</td>
           <td><%= dados[i].qtd %></td>
-          <td><%= Number(dados[i].Pontos)*Number(dados[i].qtd) %></td>
+          <td><%= Number(dados[i].Pontos)*Number(dados[i].qtd) %> Pontos</td>
           <td><%= dados[i].data %></td>
           <% } %>
         </tr>
@@ -32,12 +32,12 @@
         <% } %>
     <tfoot>
       <tr>
-          <td colspan="3">
+          <td colspan="6">
           <% if (pag > 1) {%>
-          <a href="/posts/<%= Number(pag) - 1 %>"> <-- </a>
+          <a href="/arrecadacoes/<%= Number(pag) - 1 %>"> <-- </a>
           <% } %>
           <% if (qtd_posts < dados.length) {%>
-          <a href="/posts/<%= Number(pag) + 1  %>"> --> </a>
+          <a href="/arrecadacoes/<%= Number(pag) + 1  %>"> --> </a>
           <% } %>
         </td>
       </tr>
@@ -50,7 +50,7 @@
       <td><%= dados[i].Descricao %></td>
       <td><%= dados[i].Pontos %> Pontos</td>
       <td><%= dados[i].qtd %></td>
-      <td><%= Number(dados[i].Pontos)*Number(dados[i].qtd) %></td>
+      <td><%= Number(dados[i].Pontos)*Number(dados[i].qtd) %> Pontos</td>
       <td><%= dados[i].data %></td>
       <% } %>
     </tr>

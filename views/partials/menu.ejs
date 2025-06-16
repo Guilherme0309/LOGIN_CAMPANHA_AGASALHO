@@ -1,19 +1,16 @@
 <header>
     <nav>
+        <center><img src="../../static/Logo.png" width="250px"></center>
+        <br>
         <ul>
             <li><a href="/tabGeral/1">TABELA GERAL</a></li>
             <li><a href="/arrecadacoes/1">ARRECADAÇÕES</a></li>
-            <% if(req.session.loggedin) { %>
+            <% if(req.session.adm) { %>
                 <li><a href="/nova-doacao">NOVA DOAÇÃO</a></li>
-            <% if(req.session.adm){ %>
-                <li><a href="/dashboard">DASHBOARD</a></li>
             <% } %>
+            <%if(req.session.loggedin){%>
+            <a href="/logout">Sair da Conta</a>
             <% } %>
         </ul>
     </nav>
-    <% if(req.session.loggedin) { %>
-    <a href="/logout">Sair da Conta</a>
-    <% } else { %>
-        <a href="/login">LOGIN</a> 
-    <% } %>
 </header>

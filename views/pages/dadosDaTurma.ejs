@@ -4,44 +4,68 @@
 <%- include("../partials/head") %>
 
 <body>
-    <%- include("../partials/menu") %>
-    <br><br>
-    <a href="/posts/1"><img src="../../static/voltar.png" width="40px"/ style="margin: 10px;"></a>
-    <br><br>
-    <center>
+  <%- include("../partials/menu") %>
+  <br><br>
+  <a href="/tabGeral/1"><img src="../../static/voltar.png" width="40px" / style="margin: 10px;"></a>
+  <br>
+  <center>
     <div>
-        <%- console.log(JSON.stringify(dados)); %>
-        
-        <h1><%= dados[0].sigla %></h1>
-        <br>
-        <label>Docente: <%= dados[0].docente %></label>
-        <br>
-        <br>
-        <main id="MainDash">
+      <h1>TURMA: <%= dados[0].sigla %></h1>
+      <br>
+      <h2>Docente: <%= dados[0].docente %></h2>
+      <br>
+      <main id="MainDash">
         <table>
-            <thead>
-                <tr>
-                  <th>Tipos de Roupa</th>
-                  <th>Quantidade Arrecadada</th>
-                </tr>
-              </thead>
-              <tbody>
-            <% let i = 0; for (i = 0; i< turmas.length; i++) {%>
+          <thead>
             <tr>
-                <td><%= turmas[i].Descricao %> - <%= turmas[i].Pontos%> Pontos</td>
-                <td>
-                    <% if (turmas.Descricao == dados[0].Descricao) {%>
-                    <% dados[0].qtd %>
-                    <% } %>
-                </td>
+              <th>Tipos de Roupa</th>
+              <th>Quantidade Arrecadada</th>
+              <th>Pontos Ganhos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% let i = 0; for (i = 0; i< roupas.length; i++) {%>
+            <tr>
+              <td><%= roupas[i].Descricao %> - <%= roupas[i].Pontos%> Pontos</td>
+              <td>
+                <!-- FAZ A SOMA CASO EXISTAM MAIS ARRECADAÇÕES DE UMA MESMA ROUPA -->
+                <% let qtd_roupas = 0 %>
+                <% for (let x = 0; x < dados.length; x++) {%>
+                <% if (roupas[i].Descricao == dados[x].Descricao) {%>
+                <% qtd_roupas += Number(dados[x].qtd) %>
+                <% } %>
+                <% } %>
+                <!-- EXIBE QTD ROUPAS -->
+                <%= qtd_roupas %>
+              </td>
+              <td>
+                <!-- FAZ A SOMA CASO EXISTAM MAIS ARRECADAÇÕES DE UMA MESMA ROUPA -->
+                <% let qtd_pontos = 0 %>
+                <% for (let x = 0; x < dados.length; x++) {%>
+                <% if (roupas[i].Descricao == dados[x].Descricao) {%>
+                <% qtd_pontos += Number(dados[x].Pontos) %>
+                <% } %>
+                <% } %>
+                <!-- EXIBE QTD ROUPAS -->
+                <%= qtd_pontos %>
+              </td>
             </tr>
             <% } %>
-              </tbody>
+          </tbody>
         </table>
-    </main>
+      </main>
+      <h2>
+        PONTOS GANHOS: 
+        <% let total_pontos = 0 %>
+        <% for (let x = 0; x < dados.length; x++) {%>
+        <% total_pontos += Number(dados[x].Pontos) %>
+        <% } %>
+        <%= total_pontos %>
+      </h2>
+      <br>
     </div>
-    </center>
-    <%- include("../partials/footer") %>
+  </center>
+  <%- include("../partials/footer") %>
 </body>
 
 </html>

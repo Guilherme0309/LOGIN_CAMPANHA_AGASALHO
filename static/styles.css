@@ -2,35 +2,26 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, sans-serif;
-}
+  
+  }
 
-body {
-    background-color: #f9f9f9;
-    color: #333;
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #112553, #0E71C2);
+    color: #FFFFFF;
     line-height: 1.6;
     min-height: 100vh;
-}
+  }
 
 /* HEADER (TOPO) */
 header {
-    background-color: red;
-    padding: 16px 32px;
-    color: white;
-    text-align: right;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-header a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    margin-left: 15px;
-    transition: color 0.3s ease;
-}
-
-header a:hover {
-    color: white;
+    list-style: none;
+    background-color: #112553;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding-top: 10px;
 }
 
 /* MENU DE NAVEGAÇÃO */
@@ -48,58 +39,32 @@ nav ul {
 
 nav ul li {
     display: inline-block;
-    margin: 0 25px;
+    margin: 0 15px;
     position: relative;
-}
-
-nav ul li::after {
-    content: '';
-    display: block;
-    height: 2px;
-    width: 0%;
-    background: white; /* linha de destaque branca */
-    transition: width 0.3s;
-    margin: 5px auto 0 auto;
-}
-
-nav ul li:hover::after {
-    width: 100%;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white; /* cor do menu branca */
     font-weight: bold;
-    font-size: 1.1rem;
-    transition: transform 0.2s, color 0.2s;
 }
 
-nav ul li a:hover {
-    transform: scale(1.1);
-    color: white; /* permanece branca no hover */
+nav a {
+    color: #FFFFFF;
+  text-decoration: none;
+  padding: 8px 16px;
+  background-color: transparent;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #101386;
 }
 
 /* TÍTULO DA PÁGINA DE LOGIN */
 #h1Login {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     margin: 30px auto;
     text-align: center;
-    color: red;
 }
 
 /* CAMPOS DE FORMULÁRIO */
-input, textarea {
-    font-size: 16px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    width: 200px;
-    max-width: 100%;
-    color: #0d0d80;
-    outline: none;
-    transition: border 0.3s ease;
-    display: inline-block;
-}
 
 /* TABELAS DE FORMULÁRIOS */
 table {
@@ -124,33 +89,44 @@ table {
 
 /* BOTÕES */
 button {
-    padding: 10px 20px;
-    border: none;
-    background-color: red;
+    padding: 12px;
+    background-color: #101386;
     color: white;
-    border-radius: 8px;
-    font-size: 1rem;
     font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s;
-}
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0e0c73;
+  }
 
-button:hover {
-    background-color: #cc0000;
-    transform: scale(1.05);
-}
+  input, select {
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    font-family: sans-serif;
+    background-color: #FFFFFF;
+    color: #112553;
+  }
+  
+  input::placeholder {
+    color: #999;
+  }
 
 /* RODAPÉ FIXO */
 footer {
+    background-color: #112553;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 15px;
     position: sticky;
     top: 100vh;
+    bottom: 0;
     width: 100%;
-    background-color: red;
-    color: white;
-    text-align: center;
-    padding: 12px 0;
-    font-size: 0.9rem;
-}
+  }
 
 #MainDash *{
     border: 1px solid;
@@ -165,4 +141,5 @@ footer {
 /* LINKS GERAIS */
 a {
     font-size: large;
+    color: white;
 }
