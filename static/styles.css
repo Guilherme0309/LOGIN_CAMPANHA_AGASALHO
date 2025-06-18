@@ -13,7 +13,11 @@
     min-height: 100vh;
   }
 
-/* HEADER (TOPO) */
+  a {
+    font-size: large;
+    color: white;
+}
+
 header {
     list-style: none;
     background-color: #112553;
@@ -24,7 +28,6 @@ header {
     padding-top: 10px;
 }
 
-/* MENU DE NAVEGAÇÃO */
 nav {
     background: transparent; /* sem cor de fundo */
     padding: 15px 0;
@@ -45,28 +48,21 @@ nav ul li {
 }
 
 nav a {
-    color: #FFFFFF;
-  text-decoration: none;
   padding: 8px 16px;
-  background-color: transparent;
   border-radius: 5px;
-  transition: 0.3s;
+  text-decoration: none;
 }
 
 nav a:hover {
     background-color: #101386;
 }
 
-/* TÍTULO DA PÁGINA DE LOGIN */
 #h1Login {
     font-size: 3.5rem;
     margin: 30px auto;
     text-align: center;
 }
 
-/* CAMPOS DE FORMULÁRIO */
-
-/* TABELAS DE FORMULÁRIOS */
 table {
     width: auto;
     margin: 20px auto;
@@ -82,12 +78,6 @@ table {
     text-align: left;
 }
 
-#tblPost tr td {
-    text-align: left;
-    padding-left: 10px;
-}
-
-/* BOTÕES */
 button {
     padding: 12px;
     background-color: #101386;
@@ -116,7 +106,6 @@ button {
     color: #999;
   }
 
-/* RODAPÉ FIXO */
 footer {
     background-color: #112553;
     color: #FFFFFF;
@@ -128,18 +117,59 @@ footer {
     width: 100%;
   }
 
-#MainDash *{
-    border: 1px solid;
-    width: 1100px;
+#MainDash {
+
+table {
+  width: 70%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  text-align: center;
 }
 
-#MainDash table{
-    text-align: center;
-    border: 3px solid;
+table thead tr {
+  background-color: #112553;
+  color: white;
+  text-align: left;
+  text-align: center;
 }
 
-/* LINKS GERAIS */
-a {
-    font-size: large;
-    color: white;
+table thead a{
+  text-decoration: none;
+}
+
+table th {
+  padding: 12px 15px;
+  font-weight: 600;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+table td {
+  padding: 12px 15px;
+}
+
+table tfoot td {
+  padding: 5px;
+  text-align: center;
+  background-color: #112553;
+  font-weight: bold;
+}
+
+table tfoot a {
+  text-decoration: none;
+  margin: 0 30px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 29px;
+}
+
+table tfoot a:hover {
+  background-color: #112553;
+}
 }

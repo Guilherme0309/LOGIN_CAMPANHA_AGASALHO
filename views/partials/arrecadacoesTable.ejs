@@ -1,12 +1,16 @@
 <table>
   <thead>
     <tr>
-      <th>SALA</th>
+      <th>
+        <a href="/arrecadacoes/1?orderBy=sala" <%if(orderBy == "sala"){%>style="color: yellow;"<% } %> >
+        SALA↕</a>
+        
+      </th>
       <th>TIPO DE ROUPA</th>
       <th>PONTOS (UNITÁRIOS)</th>
       <th>QUANTIDADE</th>
       <th>PONTOS GANHOS</th>
-      <th>DATA</th>
+      <th><a href="/arrecadacoes/1?orderBy=data" <%if(orderBy == "data"){%>style="color: yellow;"<% } %>>DATA↕</a></th>
     </tr>
   </thead>
   <tbody>
@@ -15,7 +19,6 @@
     <%- console.log(JSON.stringify(qtd_posts)); %>
     <%- console.log(JSON.stringify(dados.length)); %>
 
-    <!-- SE EXISTIREM MAIS DE 5 POSTS -->
     <% if (dados.length > 5) { %> 
       <% let i = qtd_posts-5; for (i = qtd_posts-5 ; i< qtd_posts; i++) {%>
         <% if (i < dados.length) {%>
@@ -34,10 +37,10 @@
       <tr>
           <td colspan="6">
           <% if (pag > 1) {%>
-          <a href="/arrecadacoes/<%= Number(pag) - 1 %>"> <-- </a>
+          <a href="/arrecadacoes/<%= Number(pag) - 1 %>?orderBy=<%= orderBy%>">⬅</a>
           <% } %>
           <% if (qtd_posts < dados.length) {%>
-          <a href="/arrecadacoes/<%= Number(pag) + 1  %>"> --> </a>
+          <a href="/arrecadacoes/<%= Number(pag) + 1  %>?orderBy=<%= orderBy%>">⮕</a>
           <% } %>
         </td>
       </tr>

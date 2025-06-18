@@ -123,15 +123,23 @@ app.get("/arrecadacoes/:pag", (req, res) => {
   if (req.session.loggedin) {
     console.log("GET /arrecadacoes");
     const pag = req.params.pag;
-    const query =
-      "SELECT id_arrecadacao, Turmas.sigla, Pontuacao_Roupas.Descricao, Pontuacao_Roupas.Pontos, qtd, data FROM Arrecadacoes INNER JOIN Turmas ON Arrecadacoes.id_turma = Turmas.id_turma INNER JOIN Pontuacao_Roupas ON Arrecadacoes.id_roupa = Pontuacao_Roupas.id ORDER BY Arrecadacoes.id_turma, Arrecadacoes.data DESC";
-    db.all(query, [], (err, row) => {
+    const orderBy = req.query.orderBy;
+    console.log(orderBy);
+    let query =
+      "SELECT id_arrecadacao, Turmas.sigla, Pontuacao_Roupas.Descricao, Pontuacao_Roupas.Pontos, qtd, data FROM Arrecadacoes INNER JOIN Turmas ON Arrecadacoes.id_turma = Turmas.id_turma INNER JOIN Pontuacao_Roupas ON Arrecadacoes.id_roupa = Pontuacao_Roupas.id ORDER BY ";
+    if (orderBy == "data"){
+      query += " Arrecadacoes.data DESC";
+    } else if (orderBy == "sala"){
+      query += " Arrecadacoes.id_turma";
+    }
+      db.all(query, [], (err, row) => {
       if (err) throw err;
       res.render("pages/arrecadacoes", {
         titulo: "Arrecadações",
         dados: row,
         req: req,
         pag: pag,
+        orderBy: orderBy,
       });
     });
   } else {

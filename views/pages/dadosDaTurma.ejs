@@ -10,8 +10,7 @@
   <br>
   <center>
     <div>
-      <h1>TURMA: <%= dados[0].sigla %></h1>
-      <br>
+      <h1 id="h1Login">TURMA: <%= dados[0].sigla %></h1>
       <h2>Docente: <%= dados[0].docente %></h2>
       <br>
       <main id="MainDash">
@@ -52,19 +51,21 @@
             </tr>
             <% } %>
           </tbody>
+          <tfoot>
+            <td colspan="4">
+              PONTOS GANHOS:
+              <% let total_pontos = 0 %>
+              <% for (let x = 0; x < dados.length; x++) {%>
+              <% total_pontos += Number(dados[x].Pontos) %>
+              <% } %>
+              <%= total_pontos %>
+            </td>
+          </tfoot>
         </table>
       </main>
-      <h2>
-        PONTOS GANHOS: 
-        <% let total_pontos = 0 %>
-        <% for (let x = 0; x < dados.length; x++) {%>
-        <% total_pontos += Number(dados[x].Pontos) %>
-        <% } %>
-        <%= total_pontos %>
-      </h2>
-      <br>
     </div>
   </center>
+  <br><br>
   <%- include("../partials/footer") %>
 </body>
 
